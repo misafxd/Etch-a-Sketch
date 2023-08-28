@@ -53,7 +53,14 @@ gridSize.addEventListener('click', () => {
     do {
         gridChoice = prompt('Grid size: ');
         valor = parseInt(gridChoice);
-    }while (isNaN(valor));
+
+        if(isNaN(valor)){
+            alert('Please, enter a number');
+        }else if(valor < 1 || valor > 100){
+            alert('Only number between 1 and 100');
+        }
+
+    }while (isNaN(valor) || valor < 1 || valor > 100);
     choice = gridChoice;
     clearGrid();
     drawGrid(gridChoice);
