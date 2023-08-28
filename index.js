@@ -16,22 +16,44 @@ function clearGrid(){
 }
 
 function drawGrid(gridChoice = 16){
-
     let pixelWidth = (CONTAINER_SIZE/gridChoice) + "rem";
     for(let i = 0; i < (gridChoice * gridChoice); i++){
         const pixel = document.createElement('div');
         pixel.style.width = pixelWidth;
         pixel.style.height = pixelWidth;
         pixel.classList.add('pixel');
-        pixel.addEventListener('click',() =>{
-            pixel.style.backgroundColor = color.value;
+
+        pixel.addEventListener('mouseover', (e) => {
+            if(e.target.tagName ==='DIV'){
+                e.target.style.backgroundColor = color.value;
+                e.target.classList.add('active');
+            }
+        } );
+
+        pixel.addEventListener('mouseout', (e) => {
+            if(e.target.tagName === 'DIV' && !e.target.classList.contains('clicked')){
+                e.target.style.backgroundColor = 'initial';
+                e.target.classList.remove('active');
+            }
         })
+
+        pixel.addEventListener('click',(e) =>{
+            if(e.target.tagName === 'DIV'){
+                e.target.classList.toggle('clicked');
+            }
+        });
+ 
         container.appendChild(pixel);
 }
 }
 
 gridSize.addEventListener('click', () => {
-    let gridChoice = prompt('Grid size: ');
+    let valor;
+    let gridChoice;
+    do {
+        gridChoice = prompt('Grid size: ');
+        valor = parseInt(gridChoice);
+    }while (isNaN(valor));
     choice = gridChoice;
     clearGrid();
     drawGrid(gridChoice);
