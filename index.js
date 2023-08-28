@@ -24,7 +24,7 @@ function drawGrid(gridChoice = 16){
         pixel.classList.add('pixel');
 
         pixel.addEventListener('mouseover', (e) => {
-            if(e.target.tagName ==='DIV'){
+            if(e.target.tagName ==='DIV' && !e.target.classList.contains('clicked')){
                 e.target.style.backgroundColor = color.value;
                 e.target.classList.add('active');
             }
@@ -40,6 +40,13 @@ function drawGrid(gridChoice = 16){
         pixel.addEventListener('click',(e) =>{
             if(e.target.tagName === 'DIV'){
                 e.target.classList.toggle('clicked');
+                if (e.target.classList.contains('clicked')) {
+                    e.target.style.backgroundColor = color.value;
+                    e.target.classList.add('active');
+                } else {
+                    e.target.style.backgroundColor = 'initial';
+                    e.target.classList.remove('active');
+                }
             }
         });
  

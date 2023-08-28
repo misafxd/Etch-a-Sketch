@@ -28,7 +28,6 @@ body {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    border: 5px solid #b12a5b;
 }
 
 .controls {
