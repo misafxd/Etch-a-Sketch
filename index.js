@@ -78,6 +78,4 @@ reset.addEventListener('click', () => {
     drawGrid(choice);
 })
 
-
-
 drawGrid()
