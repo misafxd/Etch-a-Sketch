@@ -1,8 +1,8 @@
 const container = document.querySelector('.container');
 const gridSize = document.querySelector('.grid-size');
 const color = document.querySelector('#pixel-color');
-
-
+const reset = document.querySelector('.reset');
+let choice = 16;
 const CONTAINER_SIZE = 30;
 
 function clearGrid(){
@@ -32,10 +32,15 @@ function drawGrid(gridChoice = 16){
 
 gridSize.addEventListener('click', () => {
     let gridChoice = prompt('Grid size: ');
+    choice = gridChoice;
     clearGrid();
     drawGrid(gridChoice);
 })
 
+reset.addEventListener('click', () => {
+    clearGrid();
+    drawGrid(choice);
+})
 
 
 
