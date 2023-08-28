@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const gridSize = document.querySelector('.grid-size');
 const color = document.querySelector('#pixel-color');
 const reset = document.querySelector('.reset');
+const random = document.querySelector('.random');
 let choice = 16;
 const CONTAINER_SIZE = 30;
 let clickTimeout;
@@ -20,10 +21,28 @@ function clearGrid(){
 function drawGrid(gridChoice = 16) {
     let pixelWidth = (CONTAINER_SIZE / gridChoice) + "rem";
     let isMousePressed = false;
+    let isRandomColorActive = false;
+
+    function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+    }
+
+    random.addEventListener('click', () => {
+        isRandomColorActive = !isRandomColorActive;
+    });
 
     function changeColor(e) {
         if (isMousePressed && e.target.tagName === 'DIV' && !e.target.classList.contains('clicked')) {
-            e.target.style.backgroundColor = color.value;
+            if (isRandomColorActive) {
+                e.target.style.backgroundColor = getRandomColor();
+            } else {
+                e.target.style.backgroundColor = color.value;
+            }
             e.target.classList.add('active');
         }
     }
