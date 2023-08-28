@@ -1,13 +1,17 @@
 html {
     margin: 0;
     font-size: 16px;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     box-sizing: border-box;
 }
 
 body {
     display: flex;
     flex-direction: column;
+    gap: 2rem;
     align-items: center;
+    background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
 }
 
 .main {
@@ -23,15 +27,22 @@ body {
     max-height: 30rem;
     display: flex;
     flex-wrap: wrap;
+    background-color: white;
+    border: 5px solid #b12a5b;
 }
 
 .controls {
-    margin-block-start: 3rem;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: .2rem;
     align-items: center;
+    backdrop-filter: blur(1px) saturate(82%);
+    -webkit-backdrop-filter: blur(1px) saturate(82%);
+    background-color: rgba(255, 255, 255, 0.47);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 .controls button, .controls input {
